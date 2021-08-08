@@ -1,15 +1,11 @@
-// const HeaderComponent = () => {
-//     const HEADER_HTML = `<h2>My custom element</h2><button>click me</button>`;
+const HeaderComponent = () => {
+    const HTML = `<h2>My custom element</h2><button>click me</button>`;
 
-//     const Header = document.createElement('template');
+    let _template = document.createElement('template');
     
-//     Header.innerHTML = HEADER_HTML;
+    _template.innerHTML = HTML;
 
-//     return Header;
-// }
+    return _template.content.cloneNode(true);
+}
 
-// export default HeaderComponent();
-
-const HEADER_HTML = `<h2>My custom element</h2><button>click me</button>`;
-
-export default HEADER_HTML;
+export const Header = HeaderComponent();

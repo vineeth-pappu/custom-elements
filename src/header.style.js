@@ -15,7 +15,6 @@ const createStyles = () => {
     let _style = document.createElement('style');
     _style.innerHTML = Styles;
 
-    console.log('_style ', _style);
     return _style;
 }
 

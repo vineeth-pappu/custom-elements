@@ -1,7 +1,7 @@
 // const { default: Header } = require("./header");
 // const { HeaderStyles } = require("./header.style");
 import { HeaderStyles } from "./header.style";
-import HEADER_HTML from "./header";
+import { Header } from "./header";
 
 class MyCustomTag extends HTMLElement {
     constructor() {
@@ -10,9 +10,7 @@ class MyCustomTag extends HTMLElement {
 
     connectedCallback() {
         this.render()
-        setTimeout(() => {
-            this.initEventHandlers()
-        }, 5000);
+        this.initEventHandlers()
     }
 
     initEventHandlers() {
@@ -22,16 +20,10 @@ class MyCustomTag extends HTMLElement {
     }
 
     render() {
-        // this._style = document.createElement('style');
-        this._template = document.createElement('template');
-
-        // this._style.innerHTML = HeaderStyles;
-
-        this._template.innerHTML = HEADER_HTML;
-
         this.root = this.attachShadow({ mode: 'open' });
+
         this.root.appendChild(HeaderStyles);
-        this.root.appendChild(this._template.content.cloneNode(true));
+        this.root.appendChild(Header);
     }
 }
 
