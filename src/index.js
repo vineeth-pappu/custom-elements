@@ -22,15 +22,15 @@ class MyCustomTag extends HTMLElement {
     }
 
     render() {
-        this._style = document.createElement('style');
+        // this._style = document.createElement('style');
         this._template = document.createElement('template');
 
-        this._style.innerHTML = HeaderStyles;
+        // this._style.innerHTML = HeaderStyles;
 
         this._template.innerHTML = HEADER_HTML;
 
         this.root = this.attachShadow({ mode: 'open' });
-        this.root.appendChild(this._style);
+        this.root.appendChild(HeaderStyles);
         this.root.appendChild(this._template.content.cloneNode(true));
     }
 }
