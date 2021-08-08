@@ -3,6 +3,8 @@
 import { HeaderStyles } from "./header.style";
 import { Header } from "./header";
 
+import 'whatwg-fetch';
+
 class MyCustomTag extends HTMLElement {
     constructor() {
         super();
@@ -11,6 +13,15 @@ class MyCustomTag extends HTMLElement {
     connectedCallback() {
         this.render()
         this.initEventHandlers()
+        this.pollApi()
+    }
+
+    pollApi() {
+        fetch('//abc.com').then(res => res.json()).then(data => {
+            console.log('fetch data', data);
+        }).catch(err => {
+            console.log('fetch err', err);
+        })
     }
 
     initEventHandlers() {
