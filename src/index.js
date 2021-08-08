@@ -17,7 +17,7 @@ class MyCustomTag extends HTMLElement {
     }
 
     pollApi() {
-        fetch('//abc.com').then(res => res.json()).then(data => {
+        fetch('/src/api.json').then(res => res.json()).then(data => {
             console.log('fetch data', data);
         }).catch(err => {
             console.log('fetch err', err);
