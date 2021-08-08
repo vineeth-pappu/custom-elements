@@ -1,5 +1,6 @@
 const path = require('path');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
     entry: [
@@ -8,6 +9,7 @@ module.exports = {
     output: {
         filename: 'bundle.js',
         path: path.resolve(__dirname, 'dist'),
+        clean: true,
     },
     module: {
         rules: [
@@ -22,6 +24,15 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: './src/index.html',
             filename: './index.html'
-        })
+        }),
+        new CopyPlugin({
+            patterns: [
+                { 
+                    from: "./node_modules/@webcomponents/webcomponentsjs/*.js*",
+                    to: "vendor/webcomponents/[name][ext]" 
+                },
+            ],
+          }),
+      
     ]
 }
