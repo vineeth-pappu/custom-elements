@@ -4,6 +4,7 @@ import { HeaderStyles } from "./header.style";
 import { Header } from "./header";
 
 import 'whatwg-fetch';
+import 'regenerator-runtime/runtime.js';
 
 class MyCustomTag extends HTMLElement {
     constructor() {
@@ -16,14 +17,22 @@ class MyCustomTag extends HTMLElement {
         this.pollApi()
     }
 
-    pollApi() {
+    async pollApi() {
         fetch('/src/api.json').then(res => res.json()).then(data => {
             console.log('fetch data', data);
         }).catch(err => {
             console.log('fetch err', err);
         })
+        
+        try {
+            const res = await fetch('/src/api.json');
+            const data = await res.json();
+            console.log('fetch await data', data);
+        } catch (error) {
+            console.log('fetch await error', error);
+        }
     }
-
+    
     initEventHandlers() {
         this.root.querySelector('button').addEventListener('click', (e) => {
             console.log('button clicked ', e);
