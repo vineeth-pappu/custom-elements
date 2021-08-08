@@ -3,6 +3,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
+    devtool: 'source-map',
     entry: [
         path.resolve(__dirname, './src/index.js')
     ],
