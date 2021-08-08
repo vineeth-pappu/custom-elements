@@ -15,5 +15,14 @@
 
     <!-- <script src="./index.js"></script> -->
     
+    <script>
+        window.onload = function(e) {
+            console.log('window onload ', e);
+            document.querySelector('my-custom-tag').addEventListener('btnClicked', function(btnEvent) {
+                console.log('custom element btnEvent ', btnEvent);
+            })
+        }
+    </script>
+
 </body>
 </html>

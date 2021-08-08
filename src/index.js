@@ -16,6 +16,16 @@ class MyCustomTag extends HTMLElement {
     initEventHandlers() {
         this.root.querySelector('button').addEventListener('click', (e) => {
             console.log('button clicked ', e);
+            this.dispatchEvent(new CustomEvent('btnClicked', {
+                detail: {
+                    somedata: {
+                        one: '1',
+                        two: {
+                            three: 3
+                        }
+                    }
+                }
+            }))
         })
     }
 
