@@ -1,17 +1,18 @@
+// const { default: Header } = require("./header");
+// const { HeaderStyles } = require("./header.style");
+import { HeaderStyles } from "./header.style";
+import HEADER_HTML from "./header";
+
 class MyCustomTag extends HTMLElement {
     constructor() {
         super();
     }
 
     connectedCallback() {
-        // this.innerHTML = '<h2>My custom element</h2><button>click me</button>';
-        // this.style.backgroundColor = 'blue';
-        // this.style.padding = '20 px';
-        // this.style.display = 'inline-block';
-        // this.style.color = 'white';
-
         this.render()
-        this.initEventHandlers()
+        setTimeout(() => {
+            this.initEventHandlers()
+        }, 5000);
     }
 
     initEventHandlers() {
@@ -24,22 +25,9 @@ class MyCustomTag extends HTMLElement {
         this._style = document.createElement('style');
         this._template = document.createElement('template');
 
-        this._style.innerHTML = `
-            :host {
-                display: inline-block;
-                background: pink;
-                padding: 20px;
-            }
-            h2 {
-                background-color: blue;
-                padding: 20px;
-                color: white;
-            }
-        `;
+        this._style.innerHTML = HeaderStyles;
 
-        this._template.innerHTML = `
-            <h2>My custom element</h2><button>click me</button>
-        `;
+        this._template.innerHTML = HEADER_HTML;
 
         this.root = this.attachShadow({ mode: 'open' });
         this.root.appendChild(this._style);
